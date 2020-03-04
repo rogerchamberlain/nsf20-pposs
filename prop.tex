@@ -1,0 +1,183 @@
+\documentclass[final,11pt]{article}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{multirow} 
+\usepackage[left=.80in,top=.85in,right=.80in,bottom=.85in]{geometry}
+% 14.5 pages:
+% \usepackage[left=.78in,top=.74in,right=.78in,bottom=.75in]{geometry}
+% lots of margin:
+% \usepackage[left=1.00in,top=1.00in,right=1.00in,bottom=1.00in]{geometry}
+\usepackage{subfig}
+\usepackage{wrapfig}
+\usepackage{enumerate}
+\usepackage{afterpage}
+\usepackage{sectsty}
+\usepackage{enumitem}
+\usepackage{colortbl} 
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{setspace}
+%\usepackage{bibspacing}
+\usepackage{url}
+%\usepackage{gensymb}
+%\usepackage{pgfgantt}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+
+\newif\ifcmm
+\cmmfalse
+\long\def\CMM#1{
+\ifcmm #1\else\relax\fi}
+\def\thechapter{./}
+\usepackage{moreepsf}
+\long\def\AuthorNote#1{%
+{\Large\bf #1}}
+\def\Action#1{\texttt{#1}}
+\def\TiC{{\sc corc}}
+
+\definecolor{purple}{rgb}{.6,.2,.4} 
+\definecolor{ltblue}{rgb}{.6,.6,1}
+
+\newcommand{\ignore}[1]{ }
+\graphicspath{{./}{figures/}} 
+
+\newcommand{\defn}[1]{\textbf{\textit{#1}}}
+\renewcommand{\emph}[1]{\textbf{\textit{#1}}}
+
+% Shrink space in enums and lists
+\setlist{topsep=3pt,itemsep=3pt,parsep=3pt}
+\setlist[1]{labelindent=\parindent}
+
+% Bolded figure captions in the ACM style
+\makeatletter
+\long\def\@makecaption#1#2{%
+   \vskip 10\p@
+   \setbox\@tempboxa\hbox{{\bf#1: #2}}%
+   \ifdim \wd\@tempboxa >\hsize
+    {\bf #1: #2}\par
+     \else
+       \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+   \fi}
+\makeatother
+
+
+% Make bullet list singled spaced
+\newenvironment{packed_item}{
+\begin{list}{\labelitemi}{%
+  \leftmargin=1.0em
+  \setlength{\itemsep}{3pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{3pt}
+}
+}{\end{list}}
+
+\def\paragraph#1{%
+
+\smallskip
+
+\noindent{\bf #1}\hbox to 1em{\hss}%
+}
+
+\newenvironment{rquote}{\setlength{\leftmargini}{1em}\setlength{\leftmarginii}{1em}\quotation\noindent}{\endquotation}
+
+% Make enumberated list singled spaced
+\newenvironment{packed_enum}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+
+
+% Modify the default section and subsection headers
+\makeatletter
+\def\@seccntformat#1{\@ifundefined{#1@cntformat}
+{\csname the#1\endcsname\,}
+{\csname #1@cntformat\endcsname}
+}
+\def\section@cntformat{\thesection.\,}
+\def\subsection@cntformat{\thesubsection.\,}
+\def\subsubsection@cntformat{\thesubsubsection.\,}
+
+%phjones changed to 1, 2, 2.1 ...
+%\def\thesection{\Roman{section}}
+%\def\thesubsection{\thesection.\Alph{subsection}}
+%\def\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+%\makeatother
+
+%phjones changed to 1, 2, 2.1 ...
+\def\thesection{\arabic{section}}
+\def\thesubsection{\thesection.\arabic{subsection}}
+\def\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+\makeatother
+
+\sectionfont{\normalsize\MakeUppercase}
+\subsectionfont{\normalsize}
+
+
+% Create a non-indented bolded start to a paragraph.
+\newcommand{\npara}[1]{\noindent{\bf #1}}
+
+
+% Increase the space between paragraphs.
+\setlength{\parskip}{.8ex plus 0.5ex minus 0.2ex} 
+
+
+%for comments
+\newcommand{\FIXME}[1]{\textcolor{red}{FIXME: #1}}
+
+\pagestyle{empty}
+\begin{document}
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+\begin{center}
+{\Large Collaborative Research: PPoSS: Planning: Scalable Streaming\\and Cyber-physical Systems}
+
+\vskip 0.2in
+{\sc Roger Chamberlain, Jeremy Buhler, Ron Cytron, Chandler Ahrens, Chris Gill}
+\\Dept. of Computer Science and Engineering
+\\McKelvey School of Engineering
+\\and
+\\Sam Fox School of Design \& Visual Arts
+\\Washington University in St.~Louis
+\vskip 0.05in
+{\sc Shirley Dyke}
+\\Lyles School of Civil Engineering
+\\Purdue University
+\vskip 0.05in
+{\sc Martin Herbordt}
+\\Dept. of Electrical and Computer Engineering
+\\Boston University
+\vskip 0.05in
+{\sc Miriam Leeser}
+\\Dept. of Electrical and Computer Engineering
+\\Northeastern University
+\vskip 0.05in
+{\sc Anthony Skjellum}
+\\Dept. of Computer Science and Engineering
+\\University of Tennessee at Chattanooga
+\vskip 0.05in
+Email: roger@wustl.edu
+
+
+\end{center}
+
+\clearpage
+\pagestyle{plain}
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\input{intro}
+\input{apps}
+\input{research}
+\input{plan}
+\input{broader}
+\input{prior}
+
+\clearpage
+\bibliographystyle{abbrv}
+\bibliography{prop}
+
+\end{document}

@@ -1,0 +1,61 @@
+\section{Research}
+\label{sec:research}
+
+\FIXME{RC: What the heck are we proposing to actually do? And how to we plan for it? Remember, this is a proposal for a planning grant.}
+
+\FIXME{RC: The focus is on incorporating latency constraints on streaming data computations for cyber-physical systems as they scale up.}
+
+\FIXME{RC: This will include scheduling of computational loads across ``cores'' and ``nodes'' (both terms need to be defined), and enabling communications between nodes (cores are assumed to have a common memory system).}
+
+\subsection{General Questions}
+
+\FIXME{RC: All of the following in the whole section is speculative at present. One could make a credible case that all of the points in this subsection really need to have been made already in the introduction, and don't warrant repeating here.}
+
+When deploying a streaming computation on heterogenous highly-parallel systems, the primary questions that must be addressed include:
+
+\begin{itemize}
+
+\item What are the admission control mechanisms to ensure that latency (and other) requirements are met?
+
+\item What compute stages get mapped to which specific execution platforms (both type and identification)?
+
+\item What communications paths are allocated to move data? Remember, we know a lot about the application's communication
+topology at compile time (unlike the general case that has to be dealt with by MPI).
+
+\item What scheduling algorithms (for both computation and communication) are effective?
+
+\item Are there other ``high-level'' general questions, or does the above cover it?  
+
+\end{itemize}
+
+\subsection{Specific Research Focus}
+
+\FIXME{RC: Here, we need to articulate the specific ideas and directions that will be pursued.  We have some leeway here, given the fact
+that this is a planning grant, but we do need to impress reviewers, so we can't give ourselves too much leeway to be wishy-washy.}
+
+The following things will receive attention (they are in no particular order):
+
+\begin{itemize}
+
+\item How do we express latency requirements?  Both hard real-time and soft real-time (the two will be different).
+
+\item What formal models can we leverage/develop that let us prove properties of the mapping/scheduling algortihms that we propose? Here I'm thinking of both CPS-style models that speak to schedulability of real-time computations and the kinds of models we've used for deadlock avoidance in streaming computations and correctness in MERCATOR.
+
+\item Scale up MERCATOR to multiple GPUs.
+
+\item Use of bump-in-the-wire FPGAs to facilitate communications functions (both wired and wireless).
+
+\item Use of bump-in-the-wire FPGAs to perform relevant pipeline stage computations.
+
+\item What else should we include (I'm pretty tired as I'm writing this, so I probably am forgetting something pretty major!)?
+
+\end{itemize}
+
+\subsection{Experimental Validation}
+
+The research ideas that ultimately get pursued must be evaluated for both correcness and effectiveness.  While formal methods are sufficient to show correctness of some of the theoretical results (e.g., schedulability analysis), the bulk of the evaluation will requre physical experimentation and assessment of empirical data.  Ultimately, we will build prototype systems to test our ideas, and evaluate these prototypes to judge their effectiveness.
+
+The core of our experimental infrastructure is comprised of three resources, each of which is described in more detail in the Facilities section of this proposal.  The first two elements are tied to our two application drivers: real-time hybrid simulation and catoptric systems.
+Physical shake tables are extant at both Washington Univ. in St. Louis (see Figure~\ref{fig:rths}) and Purdue Univ. (see Figure~\ref{fig:rthsbig}). An experimental catoptric system is in place at Washington Univ. (see Figure~\ref{fig:steinberg}).
+
+The thiird resource that will be leveraged to support this work is the Open Cloud Testbed (OCT) installed at the Massachusetts Green High-Performance Computing Center (MGHPCC) near Boston. Both Dr.~Herbordt of Boston Univ. and Dr.~Leeser of Northeastern Univ. are Co-PIs on the NSF-funded OCT, and PI Chamberlain is a member of the OCT's Technical Advisory Board. An important element of the OCT is the inclusion of FPGAs in a number of the testbed compute nodes, making bump-in-the-wire FPGA nodes available in a way that will support the kinds of experimental evaluations we anticipate.  Both the compute nodes and associated FPGAs will be reservable in a (near) bare-metal allocation that will allow for almost unlimited experimental opportunity.

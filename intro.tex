@@ -1,0 +1,100 @@
+\section{Introduction}
+\label{sec:intro}
+
+Streaming data is a computational paradigm that has broad applicability.
+From IoT-derived sensor data streams, to large-scale simulations of physical
+systems, to big data being analyzed as part of business practices, it is common
+to express the desired computation in terms of one or more streams of data.
+In many cases, the performance is critical to the operational success of these
+computations, yet the measure of performance varies across disciplines.
+While throughput (data elements processed per unit time) is almost always
+important, more and more applications have latency constraints as well.
+
+An emerging category of computation that has both a need for scale and
+strict latency requirements is cyber-physical systems (CPS). Here, sensor
+data (often measuring some aspect of the physical world), is streamed
+into the front end of a computational pipeline, individual stages of the
+pipeline perform portions of the computation, and the output data
+stream represents
+commands to actuators that impact/control the physical system.
+An example of this type of system is real-time hybrid simulation
+experiments in earthquake engineering~\cite{RTHS}, where a computational model
+of most of a bridge or building's dynamics in response to an earthquake
+ground motion is computed in real-time at millisecond time-scales and is
+integrated in-the-loop with sensors, actuators, and control computations
+for a physical device (e.g., energy dampers) or specimen (e.g., an
+experimental design for part of the structure).
+
+In this plannning grant proposal, we plan to target streaming data 
+applications at scale, particularly focusing on those that include explicit
+real-time requirements, spanning the range from hard to soft (probabalistic)
+latency specifications. We will
+investgate mapping of computational needs to execution platforms,
+scheduling of both computation and communications, and resource
+management algorithms and mechanisms.
+
+In the modern world, where Moore's Law is slowing down~\cite{Waldrop16}
+and Dennard scaling has effectively halted~\cite{Bohr07},
+computational accelerators are receiving increased 
+attention as approaches to improved performance.  In our investigations,
+we will explicitly explore the effectiveness of different accelerator
+technologies, in particular both Field-Programmable Gate Arrays (FPGAs)
+and Graphics Processing Units (GPUs), as execution platforms.
+
+In the current state of the art we've been able to execute the above
+example simulations for structures
+on the scale of a 9 story building, and only for linear behavior of the
+structure -- the objective of our proposed research would be to scale up
+significantly to include larger structures, non-linear behavior due to
+impacts or damage, and combining finite element models of the structure
+with fluid dynamics models for impinging forces (e.g., for a
+tsunami/earthquake combination such as occurred in 2011 off Tohoku and
+impacted the nuclear reactor at Fukushima).
+
+To enable those kinds of capabilities, we envision scaling from a single
+node with tens of computational units to tens to hundreds of nodes with
+hundreds of computational units each. Although this is not an extremely
+large scale in the world of say high-performance computing, in the realm
+of cyber-physical systems it is of very large scale, especially with
+respect to operating at millisecond time-scales (or faster, when possible)
+and enforcing strict timing guarantees for all sensing and actuation to
+ensure control stability and system safety.
+
+To manage the necessary trade-offs among power density and computational
+density this will entail, we envision leveraging heterogeneous
+architectures harnessing multi-core general purpose processors, FPGAs, and
+GPUs in each node, and integrating tens to hundreds of such nodes through
+appropriate scheduling and other forms of coordination at the operating
+system, concurrency platform, and application levels both locally and
+end-to-end.
+
+\FIXME{RC: talk about second application that is a bit less CPS focused, so
+we get the overall scope of the proposal in reader's minds.}
+
+\FIXME{RC: below are just random thoughts at this point. Suggestions for
+alternatives are definitely welcome.}
+
+Focus areas for proposal:
+\begin{enumerate}
+
+\item {\bf Cyber-physical Systems} -- this one is not listed in the call, so we
+will have to make the case for its existence.  Chris Gill has ``commensurate 
+experience'' (this is the term used in the call.
+
+\item {\bf Computer Architecture} -- this one (and the remaining ones) all are
+explicitly listed as candidate focus areas in the call.  Roger Chamberlain has
+commesnsurate experience.
+
+\item {\bf Programming Languages and Compilers} -- Ron Cytron is our
+champion in this area.
+
+\item {\bf Systems} -- as distinct from cyber-physical systems, we are
+calling this a focus relating to more classic systems software (e.g., OS,
+middleware, development environments, networks, etc.).  Jeremy Buhler can be called
+our expert here. I'm putting Martin Herbort and Tony Skjellum here as well,
+until they tell me they would prefer to be identified with another area.
+
+\FIXME{RC: Martin and Miriam, look over the NSF call and let me know which
+``focus area'' where you feel most comfortable being included.}
+
+\end{enumerate}
